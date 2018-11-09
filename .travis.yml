@@ -12,6 +12,8 @@ branches:
   - master
   - /^.*-stable$/
   - /^.*ci-check$/
+  # TODO: Remove
+  - /.*/
 
 cache:
   bundler: true
@@ -53,6 +55,10 @@ matrix:
 
     - rvm: 2.5.1
       env: RUN=smoke_test REINSTALL_BUNDLER=true
+    
+    # Working test of build for opal-cdn
+    - rvm: 2.5.1
+      env: RUN=dist DIR=cdn/opal/$TRAVIS_COMMIT
 
     - rvm: ruby-head
       env: RUN=rspec REINSTALL_BUNDLER=true
